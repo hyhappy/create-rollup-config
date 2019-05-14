@@ -1,8 +1,8 @@
-/* @flow */
+
 import { cube } from './maths';
 
 // 只使用了 cube, 所以 maths 中的 square 会被 tree shaking 移除掉
-function foo(x: ?number): number {
+function foo(x) {
   if (x) {
     return cube(x);
   }

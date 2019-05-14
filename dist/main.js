@@ -1,17 +1,13 @@
-/*!
- * YourLibraryName.js v0.1.0-canary.1
- * (c) 2017-2018 Leo Hui <leohxj@gmail.com>
- * Released under the MIT License.
- */
+(function(l, i, v, e) { v = l.createElement(i); v.async = 1; v.src = '//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; e = l.getElementsByTagName(i)[0]; e.parentNode.insertBefore(v, e)})(document, 'script');
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
-	(global.YourLibraryName = factory());
+	(global.Main = factory());
 }(this, (function () { 'use strict';
 
 // This function isn't used anywhere, so
 // Rollup excludes it from the bundle...
-var PI = 3.14;
+const PI = 3.14;
 
 
 
@@ -20,7 +16,6 @@ function cube(x) {
   return x * x * x * PI;
 }
 
-// 只使用了 cube, 所以 maths 中的 square 会被 tree shaking 移除掉
 function foo(x) {
   if (x) {
     return cube(x);
@@ -28,11 +23,14 @@ function foo(x) {
   return -1;
 }
 
+{
+  console.log('-----');
+}
+
 var main = {
-  foo: foo
+  foo
 };
 
 return main;
 
 })));
-//# sourceMappingURL=YourLibraryName.js.map
