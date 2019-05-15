@@ -13,6 +13,12 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('-----');
 }
 
+class a {
+    test() {
+
+    }
+}
 export default {
-  foo
+  foo,
+  a
 };

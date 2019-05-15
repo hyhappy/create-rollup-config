@@ -1,9 +1,9 @@
-const alias = require('rollup-plugin-alias');
+const aliasPlugin = require('rollup-plugin-alias');
 const eslintPlugin = require('rollup-plugin-eslint');
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const babel = require('rollup-plugin-babel');
-const replace = require('rollup-plugin-replace');
+const replacePlugin = require('rollup-plugin-replace');
 
 const servePlugin = require('rollup-plugin-serve');
 const livereloadPlugin = require('rollup-plugin-livereload')
@@ -14,23 +14,26 @@ const { minify } = require('uglify-es');
 
 const isDev = process.env.NODE_ENV === 'development';
 
-let plugins = [
-    alias({
-        resolve: ['.js']
-    }),
-    replace({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    }),
-    resolve(),
-    commonjs({
-        // non-CommonJS modules will be ignored, but you can also
-        // specifically include/exclude files
-        include: 'node_modules/**'
-    })
-]
-
 module.exports = (config = {}) => {
-    const { eslint, serve = {}, livereload = {} } = config
+    const { eslint, alias = {}, replace = {}, serve = {}, livereload = {} } = config
+
+    let plugins = [
+        aliasPlugin({
+            resolve: ['.js'],
+            ...alias
+        }),
+        replacePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+            ...replace
+        }),
+        resolve(),
+        commonjs({
+            // non-CommonJS modules will be ignored, but you can also
+            // specifically include/exclude files
+            include: 'node_modules/**'
+        })
+    ]
+
     if (eslint) {
         plugins.push(eslintPlugin(eslint))
     }
