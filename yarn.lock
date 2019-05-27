@@ -555,6 +555,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@qnpm/cftool@^0.1.1-test":
+  version "0.1.1-test"
+  resolved "http://npm.corp.qunar.com/@qnpm%2fcftool/-/cftool-0.1.1-test.tgz#98dba06fc3ad6b0ec065b0eb1a8648e6b8387af3"
+
 "@zeit/schemas@2.6.0":
   version "2.6.0"
   resolved "http://npm.corp.qunar.com/@zeit%2fschemas/-/schemas-2.6.0.tgz#004e8e553b4cd53d538bd38eac7bcbf58a867fe3"

@@ -1,8 +1,8 @@
 const aliasPlugin = require('rollup-plugin-alias');
 const eslintPlugin = require('rollup-plugin-eslint');
-const resolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
-const babel = require('rollup-plugin-babel');
+const resolvePlugin = require('rollup-plugin-node-resolve');
+const commonjsPlugin = require('rollup-plugin-commonjs');
+const babelPlugin = require('rollup-plugin-babel');
 const replacePlugin = require('rollup-plugin-replace');
 
 const servePlugin = require('rollup-plugin-serve');
@@ -12,10 +12,18 @@ const filesize = require('rollup-plugin-filesize');
 const uglify = require('rollup-plugin-uglify');
 const { minify } = require('uglify-es');
 
-const isDev = process.env.NODE_ENV === 'development';
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const isDev = NODE_ENV === 'development';
 
 module.exports = (config = {}) => {
-    const { eslint, alias = {}, replace = {}, serve = {}, livereload = {} } = config
+    const {
+        eslint,
+        alias = {},
+        replace = {},
+        serve = {},
+        livereload = {},
+        commonjs = {}
+    } = config
 
     let plugins = [
         aliasPlugin({
@@ -23,21 +31,23 @@ module.exports = (config = {}) => {
             ...alias
         }),
         replacePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+            'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+            NODE_ENV: JSON.stringify(NODE_ENV),
             ...replace
         }),
-        resolve(),
-        commonjs({
+        resolvePlugin(),
+        commonjsPlugin({
             // non-CommonJS modules will be ignored, but you can also
             // specifically include/exclude files
-            include: 'node_modules/**'
+            include: 'node_modules/**',
+            ...commonjs
         })
     ]
 
     if (eslint) {
         plugins.push(eslintPlugin(eslint))
     }
-    plugins.push(babel({
+    plugins.push(babelPlugin({
         runtimeHelpers: true,
         exclude: 'node_modules/**' // only transpile our source code
     }))

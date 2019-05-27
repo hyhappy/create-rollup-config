@@ -1,12 +1,15 @@
 // This function isn't used anywhere, so
 // Rollup excludes it from the bundle...
-const PI = 3.14;
+import { test } from '../dist/main';
 
-export function square(x) {
-  return x * x;
-}
+test()
+// const PI = 3.14;
 
-// This function gets included
-export function cube(x) {
-  return x * x * x * PI;
-}
+// export function square(x) {
+//   return x * x;
+// }
+
+// // This function gets included
+// export function cube(x) {
+//   return x * x * x * PI;
+// }
