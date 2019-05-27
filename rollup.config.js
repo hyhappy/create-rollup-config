@@ -1,4 +1,4 @@
-const baseConfig = require('./index')
+const baseConfig = require('./scripts/rollup.config')
 
 module.exports = [{
     input: 'src/main.js',
