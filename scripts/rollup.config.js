@@ -9,7 +9,7 @@ const servePlugin = require('rollup-plugin-serve');
 const livereloadPlugin = require('rollup-plugin-livereload')
 
 const filesize = require('rollup-plugin-filesize');
-const uglify = require('rollup-plugin-uglify');
+const { uglify } = require('rollup-plugin-uglify');
 const { minify } = require('uglify-es');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
