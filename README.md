@@ -1,6 +1,6 @@
 # rollup常用plugin基本配置
 
-提供alias，eslint，resolve，common，babel，replace等基本插件，引入方可传入同名属性进行相应的plugin配置（见[使用](#使用)）
+提供alias，eslint，resolve，common，babel，replace，postcss等基本插件，引入方可传入同名属性进行相应的plugin配置（见[使用](#使用)）
 
 ---
 
@@ -69,3 +69,16 @@ package.json配置
     ...
 }
 ```
+
+## 部分plugin介绍
+
+### postcss
+
+默认开启了minimize功能
+
+参考：[rollup-config-postcss](https://github.com/egoist/rollup-plugin-postcss)
+
+### html
+将html文件转为字符串，并支持压缩
+
+参考：[rollup-plugin-string-html](https://github.com/hyhappy/rollup-plugin-string-html)
