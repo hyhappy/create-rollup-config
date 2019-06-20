@@ -82,3 +82,6 @@ package.json配置
 将html文件转为字符串，并支持压缩
 
 参考：[rollup-plugin-string-html](https://github.com/hyhappy/rollup-plugin-string-html)
+
+## License
+MIT © [hyhappy](mailto:1056605736@qq.com)
