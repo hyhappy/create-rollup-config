@@ -8,6 +8,9 @@ const replacePlugin = require('rollup-plugin-replace');
 const servePlugin = require('rollup-plugin-serve');
 const livereloadPlugin = require('rollup-plugin-livereload')
 
+const postcssPlugin = require('rollup-plugin-postcss');
+const htmlPlugin = require('rollup-plugin-string-html')
+
 const filesize = require('rollup-plugin-filesize');
 const { uglify } = require('rollup-plugin-uglify');
 const { minify } = require('uglify-es');
@@ -22,7 +25,9 @@ module.exports = (config = {}) => {
         replace = {},
         serve = {},
         livereload = {},
-        commonjs = {}
+        commonjs = {},
+        html,
+        postcss
     } = config
 
     let plugins = [
@@ -73,6 +78,20 @@ module.exports = (config = {}) => {
             minify
         ),
         filesize()])
+    }
+
+    if (postcss) {
+        plugins.push(postcssPlugin({
+            minimize: {
+            },
+            ...postcss
+        }))
+    }
+
+    if (html) {
+        plugins.push(htmlPlugin({
+            ...html
+        }))
     }
 
     return {
