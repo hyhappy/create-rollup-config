@@ -17,7 +17,7 @@
 安装
 
 ```bash
-npm install --save-dev @qnpm/rollup-config
+yarn add cerate-rollup-config --dev
 ```
 
 使用
@@ -25,7 +25,7 @@ npm install --save-dev @qnpm/rollup-config
 ```js
 // rollup.config.js
 const path = require('path')
-const baseConfig = require('@qnpm/rollup-config');
+const baseConfig = require('create-rollup-config');
 
 const config = baseConfig({
     alias: {
