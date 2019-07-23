@@ -1,6 +1,6 @@
 {
   "name": "create-rollup-config",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "keywords": [
     "rollup",
     "babel",
@@ -14,9 +14,6 @@
     "build": "cross-env NODE_ENV=production rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
     "rollup": "^1.15.6",
     "rollup-plugin-alias": "^1.5.2",
     "rollup-plugin-babel": "^4.3.2",
@@ -30,10 +27,12 @@
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-string-html": "^1.0.0",
     "rollup-plugin-uglify": "^6.0.2",
-    "serve": "^11.0.2",
-    "uglify-es": "^3.3.10"
+    "serve": "^11.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/runtime": "^7.4.4",
     "@qnpm/cftool": "^0.1.1-test",
     "cross-env": "^5.2.0",
     "rimraf": "^2.6.3"
