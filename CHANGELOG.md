@@ -1,8 +1,14 @@
+## 2.0.1 (2019-07-23)
+
+### Features
+
+* 更新packagejson依赖
+
 ## 2.0.0 (2019-07-23)
 
 ### Features
 
-* 更换uglify plugin传参方式
+* 更新uglify plugin传参方式
 
 ## 1.0.0 (2019-06-20)
 
