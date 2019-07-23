@@ -12,8 +12,7 @@ const postcssPlugin = require('rollup-plugin-postcss');
 const htmlPlugin = require('rollup-plugin-string-html')
 
 const filesize = require('rollup-plugin-filesize');
-const { uglify } = require('rollup-plugin-uglify');
-const { minify } = require('uglify-es');
+const uglifyPlugin = require('rollup-plugin-uglify').uglify;
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isDev = NODE_ENV === 'development';
@@ -27,7 +26,8 @@ module.exports = (config = {}) => {
         livereload = {},
         commonjs = {},
         html,
-        postcss
+        postcss,
+        uglify = {}
     } = config
 
     let plugins = [
@@ -69,15 +69,7 @@ module.exports = (config = {}) => {
             }, livereload)
         ])
     } else {
-        plugins = plugins.concat([uglify(
-            {
-                compress: {
-                    drop_console: true
-                }
-            },
-            minify
-        ),
-        filesize()])
+        plugins = plugins.concat([uglifyPlugin(uglify), filesize()])
     }
 
     if (postcss) {
